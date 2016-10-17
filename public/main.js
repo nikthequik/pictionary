@@ -12,7 +12,7 @@ var pictionary = function() {
             $('#secret').text('');
             $('#top-message').show();
         }
-        
+        context.clearRect(0, 0, canvas[0].width, canvas[0].height);
     };
     
     var draw = function(position) {
