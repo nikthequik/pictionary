@@ -42,7 +42,13 @@ var changeRoles = function(id) {
                 });
             }
             i--;
-        } else if (userPool[i].role === 'Guesser'){
+        } else if (userPool[i].id === id && userPool[i].role === 'Guesser'){
+            userPool.splice(i, 1);
+            io.to(userPool[i].id).emit('assignRole', {
+                role: 'Guesser'
+            });
+            i--;
+        } else if(userPool[i].role === 'Guesser') {
             io.to(userPool[i].id).emit('assignRole', {
                 role: 'Guesser'
             });
